@@ -1,0 +1,31 @@
+<!--
+  Generated template for the DetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{item?.first_name + " " + item?.last_name}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+<ion-content>
+    <ion-card>
+        <ion-avatar ><img src="{{item?.photo_max}}" (load)="imageLoaded()"> </ion-avatar>
+        <ion-card-content>
+            <ion-card-title>
+                {{item?.first_name + " " + item?.last_name}}<br>
+                <h3>{{item?.followers_count + " подписчиков"}}</h3>
+            </ion-card-title>
+            <p>
+                <a href="https://vk.me/id{{item?.id}}"><button ion-button small outline icon-left><ion-icon name="mail"></ion-icon> Написать сообщение</button></a><br>
+
+            </p>
+        </ion-card-content>
+
+
+    </ion-card>
+
+</ion-content>

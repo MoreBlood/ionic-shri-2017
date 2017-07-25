@@ -1,11 +1,42 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      About
-    </ion-title>
-  </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+    <ion-refresher (ionRefresh)="weather($event)">
+        <ion-refresher-content>
+            pullingText="Pull to refresh weather ..."
+            refreshingText="Refreshing weather...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <ion-grid no-padding class="main-grid">
+        <ion-row class="holder-weather" style="flex-basis: 32%;">
+            <ion-grid align-items-center class="next-forecast">
+                <ion-row justify-content-center>{{data?.city}}</ion-row>
+                <ion-row justify-content-center>{{data?.date | date:'EEE, HH:mm:ss'}}
+                </ion-row>
+            </ion-grid>
+        </ion-row>
+
+        <ion-row justify-content-center class="holder-weather big" style="flex-basis: 32%;">
+            <div class="img-back-blured"><img src="{{'./assets/icons/' + data?.img + '.svg'}}"></div>
+            <div class="blur left"></div>
+            <div class="blur right"></div>
+            <div class="temp">{{data?.temp}}</div>
+        </ion-row>
+        <ion-row class="holder-weather" style="flex-basis: 40%;">
+            <ion-grid class="next-forecast">
+                <ion-row *ngFor="let day of dataNext">
+                    <div class="next-day">
+                        <span>{{day?.dt | date:'EEE'}}</span>
+                        <span class="icon"><img class="icon" src="{{'./assets/icons/' + day?.weather[0].icon+ '.svg'}}"> </span>
+                        <span>{{Math.round(day?.main.temp_min) +"° / " + Math.round(day?.main.temp_max) + "°"}}</span>
+                    </div>
+                </ion-row>
+            </ion-grid>
+        </ion-row>
+    </ion-grid>
+
+
 
 </ion-content>

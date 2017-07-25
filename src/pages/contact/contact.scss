@@ -1,3 +1,30 @@
 page-contact {
 
 }
+
+html, body, .ion-app, .ion-content {
+  background-color: transparent!important;
+}
+
+
+.rect, .circle {
+  left: -1000px;
+  position: absolute;
+  top: -1000px;
+}
+.rect{
+  border: 2px solid #a64ceb;
+}
+.circle {
+  border-radius: 50%;
+  box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+#img{
+  max-height:70vh;
+}
+.demo-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
