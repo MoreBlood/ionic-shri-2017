@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-import {Camera, CameraOptions} from '@ionic-native/camera';
 import {BackgroundMode} from '@ionic-native/background-mode';
 import {LocalNotifications} from '@ionic-native/local-notifications';
 import {Geolocation} from '@ionic-native/geolocation';
 import {Toast} from '@ionic-native/toast';
 import {Http} from '@angular/http';
-import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import {ScreenOrientation} from '@ionic-native/screen-orientation';
 
 
 import {LoadingController} from 'ionic-angular';
@@ -27,7 +26,7 @@ export class AboutPage {
     loading: any;
     backGround: any;
 
-    constructor(public navCtrl: NavController, private camera: Camera, private backgroundMode: BackgroundMode,
+    constructor(public navCtrl: NavController, private backgroundMode: BackgroundMode,
                 private localNotifications: LocalNotifications,
                 private http: Http, private geolocation: Geolocation, public loadingCtrl: LoadingController,
                 private toast: Toast, private screenOrientation: ScreenOrientation) {
@@ -38,6 +37,7 @@ export class AboutPage {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
         this.Math = Math;
+
         this.weather(null).then(()=>{
             this.backgroundMode.on('activate').subscribe(
                 data =>{
@@ -62,14 +62,6 @@ export class AboutPage {
             )
         });
 
-    }
-
-
-    push() {
-        this.localNotifications.schedule({
-            title: 'Ты пидор',
-            text: 'Я серьезно, ты ебаный пидор'
-        });
     }
 
     weather(refresher) {

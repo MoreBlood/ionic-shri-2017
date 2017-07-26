@@ -24,6 +24,7 @@ html, body, .ion-app, .ion-content {
 }
 .demo-container{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;

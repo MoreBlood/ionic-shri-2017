@@ -3,6 +3,8 @@ import {NavController} from 'ionic-angular';
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import 'tracking';
 import 'tracking/build/data/face';
+import 'tracking/build/data/eye';
+import 'tracking/build/data/mouth';
 
 
 
@@ -40,20 +42,18 @@ export class ContactPage {
 
 
     imageLoaded() {
-        const elements = document.getElementsByClassName("rect");
-        for (var i in elements){
-            elements[i].remove();
-        }
-
+        let rectHolder = document.getElementById('rect-holder');
+        rectHolder.innerHTML = "";
 
         let img = document.getElementById('img');
 
-        let tracker = new tracking.ObjectTracker(['face']);
-
+        let tracker = new tracking.ObjectTracker(['face','eye','mouth']);
+        tracker.setStepSize(1.7);
 
         tracking.track('#img', tracker);
 
         tracker.on('track', function(event) {
+            console.log(event);
 
             if(!event.data) return;
 
@@ -65,7 +65,7 @@ export class ContactPage {
 
         let plot = function(x, y, w, h) {
             let rect = document.createElement('div');
-            document.querySelector('.demo-container').appendChild(rect);
+            document.querySelector('.rect-holder').appendChild(rect);
             rect.classList.add('rect');
             rect.style.width = w + 'px';
             rect.style.height = h + 'px';

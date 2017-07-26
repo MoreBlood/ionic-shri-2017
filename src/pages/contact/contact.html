@@ -8,10 +8,11 @@
 
 
 <ion-content padding>
-  <button ion-button color="secondary" (click)="windowOpen()" outline>Запустить камеру</button>
   <div class="demo-frame">
     <div class="demo-container">
+      <div class="rect-holder" id="rect-holder"></div>
       <img id="img" src="{{item}}" (load)="imageLoaded()">
+      <button ion-button color="secondary" (click)="windowOpen()" outline>Запустить камеру</button>
     </div>
   </div>
 </ion-content>
