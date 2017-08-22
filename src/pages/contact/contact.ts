@@ -48,7 +48,6 @@ export class ContactPage {
         let img = document.getElementById('img');
 
         let tracker = new tracking.ObjectTracker(['face','eye','mouth']);
-        tracker.setStepSize(1.7);
 
         tracking.track('#img', tracker);
 
